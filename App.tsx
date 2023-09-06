@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
+import Carrinho from './src/pages/Carrinho/index';
+import { useFonts,
+          Poppins_200ExtraLight,
+          Poppins_200ExtraLight_Italic,
+          Poppins_300Light,
+          Poppins_500Medium } from '@expo-google-fonts/poppins';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Teste de aplicativo</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [fontes] = useFonts({
+    "PoppinsExl" : Poppins_200ExtraLight,
+    "PoppinsExli" : Poppins_200ExtraLight_Italic,
+    "PoppinsL" : Poppins_300Light,
+    "PoppinsM" : Poppins_500Medium
+  })
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  if(!fontes) {
+    return null;
+  }
+
+  return(
+    <SafeAreaView>
+      <StatusBar/>
+      <Carrinho/>
+    </SafeAreaView>
+  ); 
+}
